@@ -12,7 +12,6 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_popup": "popup.html",
     "default_title": "- Left-click to find boundary and apply filter\n- Right-click for more options"
   },
   "icons": {
