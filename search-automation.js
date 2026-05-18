@@ -208,7 +208,7 @@ window.triggerOdooSearch = {
             }
 
             await this.UI.click(() => document.querySelectorAll('.o_model_field_selector_value')[0]);
-            await this.UI.click(() => Array.from(document.querySelectorAll('.o_model_field_selector_popover_item_name')).find(e => e.textContent === 'ID'));
+            await this.UI.click(() => Array.from(document.querySelectorAll('.o_model_field_selector_popover_item_name')).find(e => e.textContent.includes('ID')));
             await this.UI.select(() => document.querySelectorAll('.o_tree_editor_editor select')[0], '"<"');
             await this.UI.type(() => document.querySelectorAll('.o_tree_editor_editor input[type="text"]')[0], idValue);
 
