@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Smart Boundary Helper",
-  "version": "1.0",
+  "version": "1.1",
   "author": "rosm",
   "description": "Automatically adds boundary to ticket list view",
   "permissions": ["activeTab", "scripting", "contextMenus", "storage", "cookies"],
@@ -12,7 +12,6 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_popup": "popup.html",
     "default_title": "- Left-click to find boundary and apply filter\n- Right-click for more options"
   },
   "icons": {
