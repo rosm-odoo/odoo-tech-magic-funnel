@@ -1,22 +1,22 @@
-chrome.runtime.onInstalled.addListener(() => {
-    chrome.contextMenus.create({
+browser.runtime.onInstalled.addListener(() => {
+    browser.contextMenus.create({
         id: "force-manual",
         title: "Manual Input",
         contexts: ["action"]
     });
 
-    chrome.contextMenus.create({
+    browser.contextMenus.create({
         id: "settings",
         title: "Settings...",
         contexts: ["action"]
     });
 });
 
-chrome.action.onClicked.addListener((tab) => {
+browser.action.onClicked.addListener((tab) => {
     triggerExtension(tab, "auto");
 });
 
-chrome.contextMenus.onClicked.addListener((info, tab) => {
+browser.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === "force-manual") {
         triggerExtension(tab, "manual");
     } else if (info.menuItemId === "settings") {
@@ -25,20 +25,25 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 });
 
 async function triggerExtension(tab, mode) {
-    await chrome.scripting.insertCSS({
-        target: { tabId: tab.id },
-        files: ["modal.css"]
-    });
-    await chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ["search-automation.js"],
-        world: "MAIN"
-    })
+    try {
+        await browser.scripting.insertCSS({
+            target: { tabId: tab.id },
+            files: ["modal.css"]
+        });
+        
+        await browser.scripting.executeScript({
+            target: { tabId: tab.id },
+            files: ["search-automation.js"],
+            world: "MAIN" 
+        });
 
-    await chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        func: (m) => { window.triggerOdooSearch.start(m); },
-        args: [mode],
-        world: "MAIN"
-    })
+        await browser.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: (m) => { window.triggerOdooSearch.start(m); },
+            args: [mode],
+            world: "MAIN"
+        });
+    } catch (error) {
+        console.error("Failed to trigger extension:", error);
+    }
 }

@@ -1,13 +1,13 @@
 # Odoo Tech Support Magic Funnel
-Smart boundary Chrome Extension for finding oldest tickets
+Smart boundary Firefox Extension for finding oldest tickets
 
 ### Installation / Setup
 
-1. Clone the repository
-2. Open Chrome and navigate to `chrome://extensions`
-3. Enable "Developer mode" (top-right toggle)
-4. Click "Load unpacked"
-5. Select the cloned repository folder
+1. Clone the repository (checkout the `firefox` branch)
+2. Open Firefox and navigate to `about:debugging`
+3. Select "This Firefox" from the left-hand sidebar
+4. Click "Load Temporary Add-on..."
+5. Navigate to the cloned repository folder and select `manifest.json`
 6. (Recommended) Pin the extension
 
 ### Usage

@@ -9,7 +9,8 @@
     "https://www.odoo.com/*"
   ],
   "background": {
-    "service_worker": "background.js"
+    "scripts": ["background.js"],
+    "type": "module"
   },
   "action": {
     "default_title": "- Left-click to find boundary and apply filter\n- Right-click for more options"
@@ -18,5 +19,11 @@
     "16": "icons/original.png",
     "48": "icons/original.png",
     "128": "icons/original.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "odoo-magic-funnel@odoo.com",
+      "strict_min_version": "107.0"
+    }
   }
 }
